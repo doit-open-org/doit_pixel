@@ -102,4 +102,4 @@
 
 邮箱:lihonggang@doit.am
 
-![联系人](../a31fa5dfeae11ed49fca984fb5f73fd1.jpg)
+![联系人](a31fa5dfeae11ed49fca984fb5f73fd1.jpg)
