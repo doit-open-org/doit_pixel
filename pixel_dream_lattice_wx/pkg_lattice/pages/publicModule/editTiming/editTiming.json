@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "popup": "/components/compat/popup/popup"
+  }
+}

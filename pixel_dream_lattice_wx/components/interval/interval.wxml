@@ -1,0 +1,6 @@
+<view wx:if="{{CDtimeHis}}" style="width:100%;color:#fff;height: 550rpx;overflow: hidden;">
+  <view class="bgViewCon" style="margin-left:{{offset}}px;">
+     <view class="bgView" wx:for="{{30}}" style="transform:rotate({{index*6}}deg);"></view>
+     <view class="bgViewShowNum flexCC" bindtap="updateCD">{{CDtimeHis}}</view>
+  </view>
+</view>

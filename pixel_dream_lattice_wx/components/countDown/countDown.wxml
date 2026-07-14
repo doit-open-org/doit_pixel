@@ -1,0 +1,27 @@
+<view class="countDown w100 h100" data-n="1">
+  <view class="countDownPos w100 h100">
+    <view class="countDownCon">
+      <view class="countDownView" hidden="{{showPic}}">
+        <view class="countDownTime">
+          <!-- 剩余时间 -->
+          <interval id="intervalCom" bind:intervalpicker="onIntervalPicker" bind:updatecd="onUpdateCD"/>
+        </view>
+        <!-- <view class="switchView"><switch color="#73DA8A" bindchange="CDsw" checked="{{CDsw}}" /></view> -->
+      </view>
+      <view wx:if="{{showPic && navActive == 1}}" style="position:relative;">
+        <picker-view class="my-picker" bindchange="changePicker" mask-style="background:rgb(37,37,51);z-index:0;" value="{{CDindex}}" indicator-style="color:#fff">
+          <picker-view-column style="color:#fff">
+            <view wx:for="{{hours}}" class="pickerFont">{{item}}{{lang['hour']}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{mins}}" class="pickerFont">{{item}}{{lang['minutes']}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+    <view class="addCountDownView countDownView h20 w100 flexCC">
+      <view class="done w80 flexCC" catchtap="CDsw" style="display:{{showPic ? 'none':'flex'}}">{{lang['closure']}}</view>
+      <view class="done w80 flexCC" catchtap="countDownDo" style="display:{{showPic?'flex':'none'}}">{{lang['add']}}</view>
+    </view>
+  </view>
+</view>

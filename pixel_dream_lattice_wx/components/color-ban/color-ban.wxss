@@ -1,0 +1,42 @@
+.chooseMod{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.chooseMod_item{
+  height: 70rpx;
+  width: 70rpx;
+  border-radius: 50%;
+}
+.ceilingBan{
+  margin-top: 60rpx;
+  margin-bottom: 50rpx;
+  border-radius: 20rpx;
+  position: relative;
+}
+.ceilingBan_white{
+  background: linear-gradient(to right, #fff, hsl(30, 100%, 67%));
+}
+.ceilingBan_color{
+  background: linear-gradient(to right,hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%));
+}
+.ceilingBan_colorOpacty{
+  background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1));
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.ceilingBan_yuan{
+  border-radius: 50%;
+  position: absolute;
+  box-shadow:0 0 2px 4px #39A2E9; 
+  /* border: 4px solid white; */
+}
+.colorCir{
+  background:   conic-gradient(hsl(120, 100%, 50%), hsl(60, 100%, 50%), hsl(360, 100%, 50%), hsl(300, 100%, 50%), hsl(240, 100%, 50%), hsl(180, 100%, 50%), hsl(120, 100%, 50%));
+}
+.colorWarm{
+    background:   conic-gradient(#fff, hsl(30, 100%, 67%));
+}

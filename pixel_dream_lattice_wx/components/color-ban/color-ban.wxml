@@ -1,0 +1,10 @@
+<view wx:if="{{type!=1}}" class="chooseMod" style="margin-top:{{marTop}}rpx;">
+  <view class="chooseMod_item {{ceilingColorMod==2?'colorCir':'colorWarm'}}" bindtap="ceilingChooseMod">
+  </view>
+</view>
+
+<view class="ceilingBan {{ceilingColorMod==1?'ceilingBan_color':'ceilingBan_white'}}" bindtouchstart="ceilingTouchMove" bindtouchmove="ceilingTouchMove" 
+  bindtouchend="ceilingTouchEnd" style="width:{{banWidth*yScale}}px;height:{{banHeight*yScale}}px;">
+  <view class="ceilingBan_colorOpacty" style="opacity:{{ceilingColorMod==1?1:0}};"></view>
+  <view class="ceilingBan_yuan" style="top: {{ceilingYuanTop}}px;left: {{ceilingYuanLeft}}px;width:{{banYuan*yScale}}px;height:{{banYuan*yScale}}px"></view>
+</view>

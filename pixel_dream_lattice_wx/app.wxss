@@ -1,0 +1,75 @@
+.w100{ width: 100%;}
+.w90{ width: 90%;}
+.w80{ width: 80%;}
+.w70{ width: 70%;}
+.w60{ width: 60%;}
+.w50{ width: 50%;}
+.w40{ width: 40%;}
+.w30{ width: 30%;}
+.w20{ width: 20%;}
+.w10{ width: 10%;}
+.h100{ height: 100%;}
+.h90{ height: 90%;}
+.h80{ height: 80%;}
+.h70{ height: 70%;}
+.h60{ height: 60%;}
+.h50{ height: 50%;}
+.h40{ height: 40%;}
+.h30{ height: 30%;}
+.h20{ height: 20%;}
+.h10{ height: 10%;}
+/* flex */
+.flex{
+  display: flex;
+}
+.flex_d_c{
+  flex-direction: column
+}
+.flexCC{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flexAC{
+  display: flex;
+  align-items: center;
+}
+.flexJC{
+  display: flex;
+  justify-content: center;
+}
+.flex_C_SA{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.flex_C_SB{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex_a_fe{
+  display: flex;
+  align-items: flex-end;
+}
+
+/* position */
+.pos_rel{
+  position: relative
+}
+.pos_abs{
+  position: absolute
+}
+
+/* margin */
+.margAuto{
+  margin: 0 auto;
+}
+/* overflow */
+.ovHi{
+  overflow: hidden;
+}
+.ovAu{
+  overflow:auto;
+}
+

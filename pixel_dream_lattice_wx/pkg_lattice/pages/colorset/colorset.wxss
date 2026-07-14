@@ -1,0 +1,17 @@
+@import "/utils/uicss.wxss";
+page {
+  background: #131222;
+  font-size: 28rpx;
+  color: white;
+  height: 100%;
+}
+.topTiao{
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-top: 20rpx;
+}
+.topTiao_yuan{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}

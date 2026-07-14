@@ -1,0 +1,1 @@
+<view wx:if="{{visible || show}}" class="compat-mask"><view class="compat-modal"><slot></slot></view></view>

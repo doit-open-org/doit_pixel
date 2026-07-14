@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/lattice/index",
+    "pages/device/index"
+  ],
+  "subpackages": [
+    {
+      "root": "pkg_lattice",
+      "pages": [
+        "pages/effect/effect",
+        "pages/colorset/colorset",
+        "pages/music/music",
+        "pages/txt/txt",
+        "pages/editTxt/editTxt",
+        "pages/diy/diy",
+        "pages/editDiy/editDiy",
+        "pages/picture/picture",
+        "pages/time/time",
+        "pages/publicModule/addTiming/addTiming",
+        "pages/publicModule/editTiming/editTiming",
+        "pages/dynamicDiy/dynamicDiy"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTitleText": "Pixel Dream Lattice",
+    "navigationBarBackgroundColor": "#121222",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#121222"
+  },
+  "tabBar": {
+    "color": "#8b96a8",
+    "selectedColor": "#18d77b",
+    "backgroundColor": "#121222",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/lattice/index",
+        "text": "点阵面板"
+      },
+      {
+        "pagePath": "pages/device/index",
+        "text": "设备连接"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

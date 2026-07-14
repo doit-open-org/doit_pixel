@@ -1,0 +1,16 @@
+<view class="wh-100 column flex-center">
+  <view class="wid-100" style="height:88rpx" />
+  <view wx:for="{{6}}" class="row wid-90 topTiao flex-around y-center ">
+    <view wx:for="{{12}}" class="topTiao_yuan" style="background-color:hsl({{hs[0]}},{{hs[1]}}%,50%)"></view>
+  </view>
+  
+  <color-ban id="colorBan" yScale="{{yScale}}" type="{{1}}" bind:colorbanchange="onColorBanChange" banWidth="{{260}}" banHeight="{{150}}" 
+    banYuan="{{10}}" marTop="{{40}}" />
+  
+  <view class="wid-90 row flex-around y-center" style="margin-top:60rpx">
+    <image mode="scaleToFill" style="width:40rpx;height:40rpx;" src="/img/light.png" />
+    <slider class="wid-70 addslid" value="{{bright_value}}" min="1" max="100" track-size="5" handle-size="20" step="1" handle-color="#fff" 
+      style="margin-top:-8rpx;" background-color="rgba(255,255,255,0.3)" active-color="#fff" bindchange="lightSilder" show-value="{{false}}"></slider>
+    <view class="wid-10 row flex-center">{{bright_value}}%</view>
+  </view>
+</view>

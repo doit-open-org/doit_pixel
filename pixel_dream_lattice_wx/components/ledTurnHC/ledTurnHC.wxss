@@ -1,0 +1,44 @@
+.modal_led_turn {
+  width: 568rpx;
+  /* height: 564rpx; */
+  background: #FFFFFF;
+  border-radius: 15rpx;
+}
+
+.modal_led_count {
+  width: 568rpx;
+  /* height: 564rpx; */
+  background: #FFFFFF;
+  border-radius: 15rpx;
+}
+
+.led_radio_group {
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-left: 60rpx;
+  width: 100%;
+}
+
+.led_radio {
+  padding-bottom: 40rpx;
+  width: 100%;
+  text-align: start;
+}
+
+.view_button {
+  width: 161rpx;
+  height: 69rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 30rpx;
+  background-color: #548CFF;
+  line-height: 69rpx;
+  color: white;
+}
+.flex1{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

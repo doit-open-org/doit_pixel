@@ -1,0 +1,31 @@
+.page{
+  background:#121222
+}
+.content{
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.contentDiv{
+  /* background: #f3f0f085; */
+  background: #40404d;
+}
+
+
+.colorView{
+  height: 60rpx;
+  background: linear-gradient(to right,hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%));
+  border-radius: 5px;
+  position: relative;
+}
+.labelView{
+  width: 6px;
+  height: 55rpx;
+  border:2px solid white;
+  border-radius: 10px;
+}
+.footImg{
+  width: 60rpx;
+  height: 60rpx;
+}

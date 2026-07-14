@@ -1,0 +1,76 @@
+<view class="page">
+  <view class="panel">
+    <view class="title">设备连接</view>
+    <view class="hint">本地 BLE 扫描、连接、Notify、设备信息、绑定鉴权和 DP 开关控制。</view>
+
+    <view class="field">
+      <text class="label">设备名过滤，可留空</text>
+      <input class="input" value="{{nameFilter}}" placeholder="默认 TT" bindinput="onNameFilterInput" />
+    </view>
+
+    <view class="buttons">
+      <button size="mini" type="primary" bindtap="openAdapter">初始化蓝牙</button>
+      <button size="mini" type="primary" bindtap="startScan" disabled="{{discovering}}">扫描</button>
+      <button size="mini" bindtap="stopScan" disabled="{{!discovering}}">停止</button>
+      <button size="mini" bindtap="clearLog">清日志</button>
+    </view>
+  </view>
+
+  <view class="panel">
+    <view class="section-title">设备列表</view>
+    <block wx:if="{{devices.length}}">
+      <view class="device {{selectedDeviceId === item.deviceId ? 'selected' : ''}}" wx:for="{{devices}}" wx:key="deviceId" data-index="{{index}}" bindtap="selectDevice">
+        <view class="device-content">
+          <view class="device-info">
+            <view class="device-main">
+              <text class="device-name">{{item.displayName || item.name || item.localName || 'Unknown'}}</text>
+              <text class="rssi">{{item.RSSI}} dBm</text>
+            </view>
+            <view class="meta">绑定: {{item.bindLabel}}</view>
+            <view class="meta">deviceId: {{item.deviceId}}</view>
+            <view class="meta" wx:if="{{item.manufacturer.advDeviceId}}">adv_device_id: {{item.manufacturer.advDeviceId}} / flag: {{item.manufacturer.boundFlag}}</view>
+            <view class="meta" wx:if="{{item.parsed.pid}}">pid: {{item.parsed.pid}} / mac: {{item.parsed.mac}} / pv: {{item.parsed.pv}} / dt: {{item.parsed.dt}}</view>
+            <view class="meta mono" wx:if="{{item.manufacturerHex}}">adv: {{item.manufacturerHex}}</view>
+          </view>
+          <view class="device-actions" wx:if="{{selectedDeviceId === item.deviceId}}">
+            <button size="mini" type="primary" catchtap="connectSelectedDevice" disabled="{{connected}}">连接</button>
+            <button size="mini" type="warn" catchtap="disconnectDevice" disabled="{{!connected && !connectedDevice.deviceId}}">断开</button>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty">暂无设备。先点“初始化蓝牙”，再点“扫描”。</view>
+  </view>
+
+  <view class="panel">
+    <view class="section-title">连接状态</view>
+    <view class="status-row"><text>连接</text><text>{{connected ? '已连接' : '未连接'}}</text></view>
+    <view class="status-row"><text>已选</text><text>{{selectedDevice.name || selectedDevice.deviceId || '-'}}</text></view>
+    <view class="status-row"><text>设备</text><text>{{connectedDevice.name || '-'}}</text></view>
+    <view class="status-row"><text>绑定</text><text>{{bindState}}</text></view>
+    <view class="status-row"><text>鉴权</text><text>{{authState}}</text></view>
+    <view class="status-row"><text>可控制</text><text>{{controlReady ? '是' : '否'}}</text></view>
+    <view class="status-row"><text>dev_key</text><text class="mono">{{currentDevKey || '-'}}</text></view>
+    <view class="status-row"><text>adv_device_id</text><text class="mono">{{currentAdvDeviceId || '-'}}</text></view>
+    <view class="status-row"><text>Service</text><text class="mono">{{serviceId || '-'}}</text></view>
+    <view class="status-row"><text>Read</text><text class="mono">{{readCharId || '-'}}</text></view>
+    <view class="status-row"><text>Write</text><text class="mono">{{writeCharId || '-'}}</text></view>
+    <view class="status-row"><text>PV</text><text>{{transportPv}}</text></view>
+
+  </view>
+
+  <view class="panel" wx:if="{{deviceInfo}}">
+    <view class="section-title">设备信息</view>
+    <view class="status-row"><text>device_id</text><text class="mono">{{deviceInfo.deviceId}}</text></view>
+    <view class="status-row"><text>pid</text><text>{{deviceInfo.pid}}</text></view>
+    <view class="status-row"><text>mac</text><text class="mono">{{deviceInfo.mac}}</text></view>
+    <view class="status-row"><text>software</text><text>{{deviceInfo.softwareVersion}}</text></view>
+  </view>
+
+  <view class="panel">
+    <view class="section-title">日志</view>
+    <scroll-view class="log" scroll-y="true" scroll-top="{{logScrollTop}}">
+      <view wx:for="{{logs}}" wx:key="index" class="log-line">{{item}}</view>
+    </scroll-view>
+  </view>
+</view>

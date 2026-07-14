@@ -1,0 +1,23 @@
+<view>
+  <!-- 灯序的modal -->
+<modal show="{{ledTurnModalShow}}" showClose="{{false}}" className="modal_led_turn" bind:maskclick="ledTurnMaskClick">
+  <view>
+    <text>{{lang['modal.chooseLedColor']}}</text>
+    <view style="display:flex;">
+      <radio-group class="radio_group led_radio_group" bindchange="ledTurnRadioChange">
+        <label class="radio led_radio" wx:for="{{led_turn}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{currentLedTurn == item.value ? true:false}}" />{{lang[item.name]}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="flex1" style="padding-bottom:40rpx;margin-top:40rpx;">
+    <view class="view_button" bindtap="closeLedTurn">
+      {{lang['cancel']}}
+    </view>
+    <view class="view_button" bindtap="nextLedTurn">
+      {{lang[led_turn.length==3?'modal.nextStep':'determine']}}
+    </view>
+  </view>
+</modal>
+</view>

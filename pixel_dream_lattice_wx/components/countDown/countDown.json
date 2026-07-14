@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "interval": "/components/interval/interval"
+  }
+}

@@ -1,0 +1,162 @@
+.page {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1rpx solid #e1e7f0;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #172033;
+}
+
+.hint {
+  margin-top: 10rpx;
+  color: #657187;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}
+
+.field {
+  margin-top: 20rpx;
+}
+
+.label {
+  display: block;
+  color: #657187;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+}
+
+.input {
+  height: 72rpx;
+  border: 1rpx solid #ccd6e3;
+  border-radius: 6rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 20rpx;
+}
+
+.device {
+  border-top: 1rpx solid #edf1f6;
+  padding: 18rpx 0;
+}
+
+.device.selected {
+  background: #eef6ff;
+  border: 1rpx solid #8bbcf4;
+  border-radius: 6rpx;
+  padding: 18rpx;
+  margin-top: 10rpx;
+}
+
+.device-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.device-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.device-actions {
+  flex: 0 0 120rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.device-actions button {
+  width: 120rpx;
+  margin: 0;
+  padding: 0;
+}
+
+.device:first-of-type {
+  border-top: 0;
+}
+
+.device-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.device-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.rssi {
+  color: #1f7a50;
+  font-size: 24rpx;
+}
+
+.meta {
+  color: #657187;
+  font-size: 22rpx;
+  line-height: 1.45;
+  margin-top: 6rpx;
+  word-break: break-all;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 8rpx 0;
+  color: #303a4d;
+  font-size: 25rpx;
+}
+
+.status-row text:last-child {
+  text-align: right;
+  word-break: break-all;
+}
+
+.mono {
+  font-family: Menlo, Consolas, monospace;
+}
+
+.empty {
+  color: #8b96a8;
+  font-size: 26rpx;
+}
+
+.log {
+  height: 420rpx;
+  background: #101827;
+  border-radius: 6rpx;
+  padding: 16rpx;
+  box-sizing: border-box;
+}
+
+.log-line {
+  color: #d8e2f1;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 22rpx;
+  line-height: 1.5;
+  word-break: break-all;
+}

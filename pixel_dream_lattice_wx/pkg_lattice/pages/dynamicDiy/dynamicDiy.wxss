@@ -1,0 +1,66 @@
+.page{
+  background: #121222;
+}
+.contentView{
+  width: 98%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.diyView{
+  width: 32%;
+  margin-top: 2%;
+  margin-right: 1%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.diyView:nth-child(3n){
+  margin-right: 0;
+}
+.activeDiv{
+  border: 1px solid #00FFEE
+}
+.diyViewAdd{
+  border: 1px solid #00FFEE;
+  color:#fff;
+  border-radius: 10rpx;
+}
+.contentDiv{
+  margin-top:1px;
+  margin-left:1px;
+  background: #40404d;
+}
+.menuView{
+  height: 100rpx;
+  background: #4A525E;
+}
+.diyImg{
+  width: 70rpx;
+  height: 70rpx;
+}
+
+/* foot */
+.diyFootRight{
+  width: 32%;
+}
+.diyGrid{
+  display: grid !important;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+  gap: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.diyGrid .contentDiv{
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+}
+.diyFootLeft{
+  width: 50rpx;
+  height: 160px;
+  border-radius: 10rpx;
+  background: linear-gradient(to bottom,#02FDFD,#52FFEB);
+}

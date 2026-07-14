@@ -1,0 +1,113 @@
+<view class="page w100 h100">
+  <view class="contents w100" style="height:{{!txtRed?'70%':'50%'}}">
+    <view class="strArrView" bindtap="jumpTxtPage">
+      <view class="strView" wx:for="{{arrStr}}" wx:for-index="idx" wx:for-item="itm" style="position:relative;left:{{offsetLeft}}px;top:{{offsetT}}px; opacity:{{opacity}};z-index:2">
+        <!-- 移动动态 -->
+        <view class="black" wx:if="{{colorType == 2}}" wx:for="{{itm}}" style="{{item.style2}}">
+        </view>
+        <view class="black" wx:if="{{colorType == 3}}" wx:for="{{itm}}" style="{{item.style3}}">
+        </view>
+        <view class="black" wx:if="{{colorType == 4}}" wx:for="{{itm}}" style="{{item.style4}}">
+        </view>
+        <view class="black" wx:if="{{colorType == 5}}" wx:for="{{itm}}" style="{{item.style5}}">
+        </view>
+        <!-- 静态 -->
+        <view class="black" wx:if="{{colorType == 0}}" wx:for="{{itm}}" style="{{item.style0}}">
+        </view>
+      </view>
+      <!-- 背景 -->
+      <view class="strViewBG pos_abs  w100 h100" style="{{bgPreviewStyle}}">
+      </view>
+    </view>
+    <!--txtRed txt文字只需红色 -->
+    <view class="control w100" wx:if="{{!txtRed}}" style="height:{{controlHeight100}}%">
+      <view class="controlTxtC w100 flexCC">
+        <view class="controlTxtSon w100 flex_C_SA ">
+          <view class="controlTxtCL w60">
+            <view class="controlTxtM controlTxtI flexCC {{colorType == 2?'activeImg':''}}" bindtap="changeModel" data-i="2" data-type="font">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/model1.png"/>
+            </view>
+            <view class="controlTxtM controlTxtI flexCC {{colorType == 3?'activeImg':''}}" bindtap="changeModel" data-i="3" data-type="font">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/model2.png"/>
+            </view>
+            <view class="controlTxtM flexCC {{colorType == 4?'activeImg':''}}" bindtap="changeModel" data-i="4" data-type="font">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/model3.png"/>
+            </view>
+            <view class="controlTxtM flexCC {{colorType == 5?'activeImg':''}}" bindtap="changeModel" data-i="5" data-type="font">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/model4.png"/>
+            </view>
+          </view>
+          <view class="controlTxtCR w40" style="z-index:2">
+            <view class="colorView flexCC" style="background:conic-gradient({{colorStr}});" bindtouchstart="roundColor" bindtouchmove="roundColor"  bindtouchend="roundEndTap" data-type="font">
+               <view class="colorSonView flexCC">
+                  <view class="colorSmall" data-type="font" catchtouchstart="s" catchtouchend='s' catchtap="colorSwitch" style="transform:rotate({{degJ}}deg)">
+                    <view class="colorbiao"></view>
+                  </view>
+               </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="controlBgC w100 flexCC" style="">
+        <view class="controlTxtSon w100 flex_C_SA ">
+          <view class="controlTxtCL w60">
+            <view class="controlTxtM controlTxtI flexCC {{bgI == 1?'activeImg':''}}" bindtap="changeModel" data-i="1" data-type="bg">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/bg1.png"/>
+            </view>
+            <view class="controlTxtM controlTxtI flexCC {{bgI == 2?'activeImg':''}}" bindtap="changeModel" data-i="2" data-type="bg">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/bg2.png"/>
+            </view>
+            <view class="controlTxtM flexCC {{bgI == 3?'activeImg':''}}" bindtap="changeModel" data-i="3" data-type="bg">
+              <image class="modelImg" mode="aspectFit" src="/img/txt/bg3.png"/>
+            </view>
+            <view class="controlTxtM flexCC {{bgI == 4?'activeImg':''}}" bindtap="changeModel" data-i="4" data-type="bg">
+              <image style="filter: grayscale(100%);" class="modelImg" mode="aspectFit" src="/img/txt/bg4.png"/>
+            </view>
+          </view>
+          <view class="controlTxtCR w40" style="z-index:2">
+            <view class="colorView flexCC" style="background:conic-gradient({{colorStr}});" bindtouchstart="roundColor" bindtouchmove="roundColor"  bindtouchend="roundEndTap" data-type="bg">
+               <view class="colorSonView flexCC">
+                  <view class="colorSmall" data-type="bg" catchtouchstart="s" catchtouchend='s' catchtap="colorSwitch" style="transform:rotate({{degJBg}}deg)">
+                    <view class="colorbiao"></view>
+                  </view>
+               </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="foot w100 flex_d_c flex margAuto" style="justify-content:space-around;">
+    <!-- <button class="btn w20" bindtap="leftMove">left</button>
+    <button class="btn w20" bindtap="rightMove">right</button>
+    <button class="btn w20" bindtap="frequency">frequency</button>
+    <button class="btn w20" bindtap="clear">clear</button> -->
+    <view class="footView flex_C_SB">
+        <view class="footViewRun" bindtap="leftRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/leftJT.png"/>
+        </view>
+        <view class="footViewRun" style="color:#06B470">{{lang[run[runIndex]]}}</view>
+        <view class="footViewRun" bindtap="rightRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/rightJT.png"/>
+        </view>
+    </view>
+    <view class="footView flex_C_SB">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/suned.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{lightVal}}" min="1" max="100" step="1" background-color="#525252" active-color="#fff" bindchanging="lightChangeing" bindchange="lightChange"></slider>
+        </view>
+        <view class="footViewRun">{{lightVal}}%</view>
+    </view>
+    <view class="footView flex_C_SB">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/speed.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{speedVal}}" background-color="#525252" active-color="#fff"  min="1" max="100" step="1" bindchanging="speedChangeing" bindchange="speedChange"></slider>
+        </view>
+        <view class="footViewRun">{{speedVal}}%</view>
+    </view>
+  </view>
+</view>

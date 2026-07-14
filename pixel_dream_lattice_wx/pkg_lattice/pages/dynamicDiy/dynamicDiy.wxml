@@ -1,0 +1,40 @@
+<view class="page flex flex_d_c w100 h100 pos_abs">
+  <view class="top h50 w100 ovAu">
+    <view class="contentView flex h100 margAuto ovAu">
+      <view class="diyView diyGrid {{diyIndex == idx ? 'activeDiv':''}}" wx:for="{{diyObj_dt}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx" data-i="{{idx}}" style="height:{{viewWidth}}px" bindtap="clickDiy">
+          <view wx:for="{{cells}}" wx:for-item="cell" wx:key="*this" class="contentDiv" style="background:{{itm[cell] != undefined ? 'hsl('+itm[cell]+',100%,50%)' :''}}">
+          </view>
+      </view>
+      <view class="diyView diyViewAdd flexCC" style="height:{{viewWidth}}px;" bindtap="addDiy">
+        <image style="width:100rpx;height:100rpx;" mode="aspectFit" src="/img/diy/dt_add.png"></image>
+      </view>
+    </view> 
+  </view>
+  <view class="middle h10 w100 flexAC">
+    <view class="menuView w100 flex_C_SA">
+      <view class="save" bindtap="saveDt">
+        <image mode="aspectFit" class="diyImg" src="/img/diy/diySave.png"/>
+      </view>
+      <view class="flex_C_SA w50">
+        <view class="menuIcon1" bindtap="diyCopy" style="visibility:{{changeStatus?'visible':'hidden'}}">
+          <image mode="aspectFit" class="diyImg" src="/img/diy/copy.png"/>
+        </view>
+        <view class="menuIcon2" bindtap="diyDel" style="visibility:{{changeStatus?'visible':'hidden'}}">
+          <image mode="aspectFit" class="diyImg" src="/img/diy/del.png"/>
+        </view>
+        <view class="menuIcon" bindtap="changeStatus">
+          <image mode="aspectFit" class="diyImg" src="/img/diy/diyEdit{{changeStatus?'ed':''}}.png"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="foot h40 w100 flex_C_SA">
+    <view class="diyFootRight diyGrid" style="height:{{viewWidth}}px">
+      <view wx:for="{{cells}}" wx:for-item="cell" wx:key="*this" class="contentDiv" style="background:{{itmObj[cell] != undefined ? 'hsl('+itmObj[cell]+',100%,50%)' :''}}">
+          </view>
+    </view>
+    <view class="diyFootLeft ovHi" bindtouchstart="diySpeedMove" bindtouchmove="diySpeedMove" bindtouchend="diySpeedMoveEnd">
+      <view class = "diyFootLeftBg" style="background:#8A8182;height:{{speedHeight}}px"></view>
+    </view>
+  </view>
+</view>

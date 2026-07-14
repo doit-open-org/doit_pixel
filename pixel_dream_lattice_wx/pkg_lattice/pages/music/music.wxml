@@ -1,0 +1,15 @@
+<view class="wh-100 column2 y-center ovHi">
+  <image class="maiImg" src="/img/bigmai.png" mode="scaleToFill" style="margin-top:330rpx;"></image>
+  <radio-group class="wid-100 row flex-around" bindchange="radioChange" style="margin-top:130rpx">
+    <label wx:for="{{musicItems}}" wx:key="value" class="radio">
+      <radio value="{{item.value}}" checked="{{musicIndex == index ? true: false}}" color="#0FB36F"></radio>
+      <text class="radio-text view_txtHide" style="width:130rpx">{{lang['music.' + index]}}</text>
+    </label>
+  </radio-group>
+  <view class="wid-100 row flex-around" style="margin-top:130rpx">
+    <image mode="scaleToFill" style="width:40rpx;height:40rpx;" src="/img/mic.png" />
+    <slider class="wid-70 addslid" value="{{musicdB}}" min="1" max="10" track-size="5" handle-size="20" step="1" handle-color="#fff" 
+      background-color="rgba(255,255,255,0.3)" active-color="#fff" bindchange="micSilder" show-value="{{false}}"></slider>
+    <view class="wid-10 row flex-center">{{musicdB}}</view>
+  </view>
+</view>

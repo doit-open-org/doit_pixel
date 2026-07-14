@@ -1,0 +1,110 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #1F2531;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  margin: 0.3rem 0px 0.5rem;
+}
+
+.headerView {
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+  color: #F4C741
+}
+
+.headTitle {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+/* .my-picker {
+  background: #242A36;
+} */
+
+.pickerFont {
+  color: #fff;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pickerContainer,
+.my-picker {
+  width: 100%;
+  height: 440rpx;
+}
+.switchContainer,.repeatContainer {
+  background: #242A36;
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.repeatContainer {
+  margin: 40rpx 0px;
+}
+
+.repeatVeiw {
+  display: inline-block;
+  width: 50%;
+}
+
+.operation {
+  text-align: right;
+  display: flex;
+  align-items:flex-end;
+  justify-content: flex-end;
+}
+.popView{
+  background: #fff;
+  overflow: hidden;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.popTitle{
+  height: 120rpx;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popRadio{padding: 0 50rpx;}
+.ragRadio{
+  height: 150rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.doBtnView{
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+.btnView{
+  background: #3577FF;
+  color: #fff;
+  padding: 25rpx 60rpx;
+  border-radius: 20rpx;
+}
+.tipsWv{
+  height:100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3577FF;
+}
+/* popup */
+.am-popup{
+  z-index: 2
+}
+

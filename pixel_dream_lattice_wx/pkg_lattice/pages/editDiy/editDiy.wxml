@@ -1,0 +1,45 @@
+<view class="page w100 h100 pos_abs">
+  <view class="container flexCC h70 pos_rel" style="overflow:hidden;" bindtouchstart="conMoveViewStart" bindtouchmove="conMoveView">
+    <view class="content pos_abs" style="width:{{300*m}}px; width: {{300*m}}px;top:{{contentTop}};left:{{contentLeft}}" bindtouchstart="moveDiv" bindtouchmove="moveDiv" >
+      <!-- <view wx:for="{{divs}}" class="c{{item}} contentDiv" style="width:{{14*m}}px;height:{{14*m}}px;margin-top:{{1*m}}px;margin-left:{{1*m}}px;background:{{geshu.includes(item) ? 'hsl('+geshuToH[item]+',100%,50%)' :''}}">
+      </view> -->
+      <view wx:for="{{divs}}" class="c{{item}} contentDiv" style="width:{{14*m}}px;height:{{14*m}}px;margin-top:{{1*m}}px;margin-left:{{1*m}}px;background:{{geshuToH[item] != undefined ? 'hsl('+geshuToH[item]+',100%,50%)' :''}}">
+      </view>
+    </view>
+  </view>
+  <view class="foot h30 flex_C_SA flex_d_c " style="color:white;">
+    <view class="footView flex w100 flex_C_SA">
+       <view class="footViewL" bindtap="moveBlock">
+          <image class="footImg" mode="aspectFit" src="/img/diy/move{{moveFlag?'ed':''}}.png"/>
+       </view>
+       <!-- <view class="footViewR flex_C_SA" style="color:white;width: 50%;"> -->
+        <view class="footViewR1" bindtap="big">
+          <image class="footImg" mode="aspectFit" src="/img/diy/jia.svg"/>
+        </view>
+        <view class="footViewR2">{{100 * m}}%</view>
+        <view class="footViewR1" bindtap="small">
+          <image class="footImg" mode="aspectFit" src="/img/diy/jian.svg"/>
+        </view>
+       <!-- </view> -->
+    </view>
+
+    <view class="footView flex w100 flex_C_SA">
+      <view bindtap="clearGs">
+        <image class="footImg" mode="aspectFit" src="/img/diy/del.png"/>
+      </view>
+      <view bindtap="updTap">
+        <image class="footImg" mode="aspectFit" src="/img/diy/upd{{updFlg?'ed':''}}.png"/>
+      </view>
+      <view bindtap="draw">
+        <image class="footImg" mode="aspectFit" src="/img/diy/write{{moveFlag || updFlg?'':'ed'}}.png"/>
+      </view>
+      <view bindtap="save">{{lang['diy.save']}}</view>
+    </view>
+    <view class="flex_C_SA w100" wx:if="{{!txtRed}}">
+      <view class="colorLableView w30" style="background:hsl({{h}},100%,50%);width:60rpx;height:60rpx;border-radius:50%;"></view>
+      <view class="colorView w70" bindtouchstart="roundColor" bindtouchmove="roundColor"  bindtouchend="roundEndTap">
+        <view class="labelView" style="position:absolute;left:{{leftOffset}}px;"></view>
+      </view>
+    </view>
+  </view>
+</view>

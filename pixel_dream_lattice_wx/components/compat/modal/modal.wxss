@@ -1,0 +1,1 @@
+.compat-mask{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999}.compat-modal{margin:240rpx 48rpx;background:#fff;border-radius:8rpx;padding:24rpx;color:#111}

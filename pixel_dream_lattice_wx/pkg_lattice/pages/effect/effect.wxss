@@ -1,0 +1,20 @@
+@import "/utils/uicss.wxss";
+page {
+  background: #131222;
+  font-size: 28rpx;
+  color: white;
+}
+
+.menuItem{
+  border-radius: 20rpx;
+  margin-top: 40rpx;
+}
+.mactive{
+  border: 8rpx solid #47DBDB;
+}
+.bottom-silders{
+  position: fixed;
+  bottom: 0;
+  height: 220rpx;
+  background-color: rgba(0, 0, 0, 0.9);
+}

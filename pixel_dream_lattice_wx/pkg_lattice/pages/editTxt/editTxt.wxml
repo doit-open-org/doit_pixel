@@ -1,0 +1,77 @@
+<view class="page w100 h100">
+  <view class="contents w100">
+    <scroll-view class="strArrView {{arrStr.length}}" scroll-x="true" scroll-y="{{false}}" scroll-with-animation="true" scroll-left="{{previewScrollLeft}}" show-scrollbar="false" bindscroll="onPreviewScroll" bindtap="viewInput">
+      <view id="preview-start" class="inputStart {{txtIndex==-1?'inputStartEd':''}}" bindtap="focusStart">
+        <view class="previewStartCursor"></view>
+      </view>
+      <view id="preview-char-{{idx}}" class="strView {{txtIndex==idx?'strViewEd':''}} {{txtIndex==-1 && idx == 0?'strViewSt':''}}" wx:for="{{arrStr}}" wx:for-index="idx" wx:for-item="itm" style="position:relative;left:{{offsetLeft}}px;top:2px;" data-index="{{idx}}" bindtap="changeTxtIndex">
+        <view class="black" wx:for="{{itm}}" style="left:{{item.left}}px;top: {{item.top}}px;background:hsl({{newColorArr[idx]}},100%,50%)">
+        </view>
+        <view id="preview-cursor-{{idx}}" class="previewCursorAnchor"></view>
+      </view>
+      <!-- 显示框有空余 -->
+      <view id="preview-end" class="inputTail" wx:if="{{(moveScreen - 40 - arrStr.length * 84) > 0}}" style="width:{{moveScreen - 40 - arrStr.length * 84}}px;" bindtap="focusEnd"></view>
+    </scroll-view>
+    <input class="keyboardBridge" focus="{{inputFocused}}" adjust-position="{{false}}" cursor-spacing="0" bindinput="onInp" bindblur="inputBlur" enableNative="{{false}}" controlled="{{true}}" value="{{onInpTxt}}" />
+
+    
+  </view>
+  <view class="saveAndedit flex" style="justify-content: flex-end;width:95%;margin: 0 auto;">
+    <view class="saeView" style="margin-right:40rpx" bindtap="showHistroy">
+      <image mode="scaleToFill" src="/img/txt/his.png" style="width:50rpx;height:50rpx" />
+    </view>
+    <view class="saeView" bindtap="saveHistroy">
+      <image mode="scaleToFill" src="/img/txt/save.png" style="width:50rpx;height:50rpx" />
+    </view>
+  </view>
+  <view class="iconView w100 flexCC">
+    <view class="leftView">
+      <image bindtap="leftTap" mode="aspectFit" class="directionImg" src="/img/txt/left.png"></image>
+    </view>
+    <scroll-view class="colorViewScroll" scroll-x="true" scroll-y="{{false}}" scroll-left="{{offset}}" scroll-with-animation="true" enhanced="true" show-scrollbar="false" bindscroll="scroll">
+     <view class="imgView flexCC flex_d_c" wx:for="{{15}}">
+        <view class="imgViewSon flexCC" bindtap="clickImg" data-i="{{index*2}}">
+          <image class="txtImg" mode="aspectFit" src="/img/txt/txt{{index*2}}.png"/>
+        </view>
+        <view class="imgViewSon flexCC" bindtap="clickImg" data-i="{{index*2+1}}">
+          <image class="txtImg" mode="aspectFit" src="/img/txt/txt{{index*2+1}}.png"/>
+        </view> 
+     </view>
+    </scroll-view>
+    <view class="rightView">
+      <image bindtap="rightTap" mode="aspectFit" class="directionImg" src="/img/txt/right.png"></image>
+    </view>
+  </view>
+  <!--txtRed txt文字只需红色 -->
+  <view class="foot flex_C_SA" style="width:95%" wx:if="{{!txtRed}}">
+      <view class="colorLableView w30" style="background:hsl({{h}},100%,50%);width:60rpx;height:60rpx;border-radius:50%;"></view>
+      <view class="colorView w70" bindtouchstart="roundColor" bindtouchmove="roundColor"  bindtouchend="roundEndTap">
+        <view class="labelView" style="position:absolute;left:{{leftOffset}}px;"></view>
+      </view>
+  </view>
+  <view class="btnView w100 flex_C_SA">
+     <view class="btn flexCC" bindtap="delStr"><view>X</view></view>
+     <!-- <view class="btn flexCC" bindtap="showHistroy">
+      <view><image mode="scaleToFill" src="/img/txt/his.png" style="width:50rpx;height:50rpx" /></view>
+     </view> -->
+     <view class="btn flexCC" bindtap="sendData"><view>√</view></view>
+  </view>
+</view>
+<!-- 历史记录 -->
+<view wx:if="{{histroy}}" class="histroy pos_abs w100 h100 flex">
+  <view class="hisCont w100">
+    <view class="closeModel" bindtap="closeModel"><view>X</view></view>
+    <view class="hisContStrArrView">
+      <view wx:for="{{objTenCharArr}}" class="hisTxt {{changeHisTxtId == index?'hisSelect':''}}" wx:for-item="arrStr" bindtap="changeHisTxt" id="{{index}}">
+
+        <view class="strView" wx:for="{{arrStr.arrStr}}" wx:for-index="idx" wx:for-item="itm" style="position:relative;left:{{offsetLeft}}px;top:2px;" id="{{idx}}" >
+          <view class="black" wx:for="{{itm}}" style="left:{{item.left}}px;top: {{item.top}}px;background:hsl({{arrStr.colorArr[idx]}},100%,50%)">
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<view class="wid-100 row flex-wrap flex-around">
+  <view class=" menuItem column flex-center {{menuIdx==index?'mactive':''}} {{toggleDelay?'animation-fade':''}}" wx:for="{{menuList}}"
+    bindtap="clickMenu" id="{{index}}" style="animation-delay: {{(index+1)*0.1}}s;">
+    <image mode="scaleToFill" style="width:300rpx;height:440rpx;border-radius:20rpx;" src="/img/{{index+1}}.gif" />
+  </view>
+  <view class="wid-100" style="height:230rpx;"></view>
+  
+  <view class="bottom-silders wid-100 column flex-center {{toggleDelay?'animation-fade':''}}" style="animation-delay: 1.1s;">
+    <view class="wid-90 row flex-around y-center" style="margin-top:0rpx">
+      <image mode="scaleToFill" style="width:40rpx;height:40rpx;" src="/img/light.png" />
+      <slider class="wid-70 addslid" value="{{bright_value}}" min="1" max="100" track-size="5" handle-size="20" step="1" 
+        handle-color="#fff" style="margin-top:-8rpx;" background-color="rgba(255,255,255,0.3)" active-color="#fff" bindchange="lightSilder" 
+        show-value="{{false}}"></slider>
+      <view class="wid-10 row flex-center">{{bright_value}}%</view>
+    </view>
+    <view class="wid-90 row flex-around y-center" style="margin-top:60rpx">
+      <image mode="scaleToFill" style="width:40rpx;height:40rpx;" src="/img/speed.png" />
+      <slider class="wid-70 addslid" value="{{speed_value}}" min="1" max="100" track-size="5" handle-size="20" step="1" handle-color="#fff" 
+        style="margin-top:-8rpx;" background-color="rgba(255,255,255,0.3)" active-color="#fff" bindchange="speedSilder" show-value="{{false}}"></slider>
+      <view class="wid-10 row flex-center">{{speed_value}}%</view>
+    </view>
+  </view>
+</view>

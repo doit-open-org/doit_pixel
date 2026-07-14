@@ -1,0 +1,184 @@
+.page{ 
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  background: #121222;
+}
+.contents{
+  margin-top: 30rpx;
+}
+/* 点阵开始 */
+.strArrView{
+  position: relative;
+  width: 95%;
+  height: 70px;
+  background: black;
+  /* background: linear-gradient(135deg, hsl(300, 100%, 50%),hsl(240, 100%, 50%), hsl(180, 100%, 50%), hsl(120, 100%, 50%), hsl(60, 100%, 50%),hsl(0, 100%, 50%)); */
+  margin: 0 auto;
+  /* display: flex; */
+  overflow: hidden;
+  border: 2px solid #00FFEE;
+  border-radius: 5px;
+  white-space: nowrap;
+  z-index: 5;
+}
+.strView{
+  height: 68px;
+  /* height: 70px; */
+  width: 84px;
+  display: inline-block;
+  margin-right: 0;
+  /* padding-right: 10px; */
+}
+.strViewEd{
+  /* margin-right: 5px; */
+}
+.strViewSt{
+  margin-left: 4px;
+}
+.inputTail{
+  display: inline-block;
+  height: 68px;
+  vertical-align: top;
+}
+.inputStart{
+  display: inline-block;
+  width: 40px;
+  height: 68px;
+  vertical-align: top;
+  position: relative;
+}
+.previewCursorAnchor{
+  position: absolute;
+  left: 73px;
+  top: 0;
+  width: 2px;
+  height: 68px;
+  background: transparent;
+  z-index: 2;
+}
+.strViewEd .previewCursorAnchor{
+  background: #fff;
+}
+.previewStartCursor{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 68px;
+  background: transparent;
+  transform: translateX(-50%);
+}
+.inputStartEd .previewStartCursor{
+  background: #fff;
+}
+.keyboardBridge{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.black{
+  position: absolute;
+  /* width: 7px;
+  height: 7px; */
+  width: 3px;
+  height: 3px;
+  background: #000;
+  /* border: 1rpx solid #000; */
+}
+/* 点阵结束 */
+.iconView{
+  margin: 30rpx auto 70rpx;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+.leftView,.rightView{
+  width: 10%;
+  flex: 0 0 10%;
+}
+.colorViewScroll{
+  width: 80%;
+  height: 220rpx;
+  flex: 0 0 80%;
+  white-space: nowrap;
+}
+.saeView{
+  margin-top: 40rpx;
+}
+.colorViewScroll .imgView{
+  display: inline-flex;
+  width: 110rpx;
+  height: 220rpx;
+  flex-direction: column;
+  vertical-align: top;
+  flex: 0 0 110rpx;
+}
+.imgViewSon{
+  width: 110rpx;
+  height: 110rpx;
+  flex: 0 0 110rpx;
+}
+.txtImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.colorView{
+  height: 60rpx;
+  background: linear-gradient(to right,hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%));
+  border-radius: 5px;
+  position: relative;
+}
+.labelView{
+  width: 6px;
+  height: 55rpx;
+  border:2px solid white;
+  border-radius: 10px;
+}
+.btnView{
+  margin-top: 100rpx;
+}
+.btn{
+  width: 230rpx;
+  height: 80rpx;
+  font-size: 20px;
+  border-radius: 20px;
+  color: white;
+  background: linear-gradient(90deg,#00FFEE,rgb(13, 134, 126))
+}
+.directionImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.histroy{
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 6;
+  align-items: flex-end;
+}
+.hisContStrArrView{
+  background: black;
+  height: 600rpx;
+  overflow: auto;
+}
+.hisSelect{
+  /* border-bottom: 1px solid #00FFEE; */
+  border: 1px solid #00FFEE;
+  padding: 5px 0;
+  margin-bottom: 5px;
+  border-radius: 10rpx;
+}
+.closeModel{text-align: right;}
+.hisTxt{
+  overflow: auto;
+  white-space: nowrap
+}
+.closeModel view{
+  color: #fff;
+  font-size: 1.2em;
+  margin-right: 20rpx;
+}

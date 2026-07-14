@@ -1,0 +1,126 @@
+.page{ 
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  background: #121222;
+}
+.contents{
+  /* height: 70%; */
+}
+/* 点阵开始 */
+.strArrView{
+  position: relative;
+  width: 95%;
+  height: 70px;
+  background: black;
+  /* background: linear-gradient(135deg, hsl(300, 100%, 50%),hsl(240, 100%, 50%), hsl(180, 100%, 50%), hsl(120, 100%, 50%), hsl(60, 100%, 50%),hsl(0, 100%, 50%)); */
+  margin: 0 auto;
+  /* display: flex; */
+  overflow: hidden;
+  border: 2px solid #00FFEE;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.strView{
+  height: 68px;
+  /* height: 70px; */
+  width: 64px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.black{
+  position: absolute;
+  /* width: 7px;
+  height: 7px; */
+  width: 3px;
+  height: 3px;
+  background: #000;
+  /* border: 1rpx solid #000; */
+}
+/* 点阵结束 */
+.controlTxtC,.controlBgC{
+  height: 50%;
+}
+.controlSw{
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5)
+}
+.controlTxtCL{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.colorView{
+  width: 260rpx;
+  height: 260rpx;
+  /* width: 200rpx;
+  height: 200rpx; */
+  border-radius: 50%;
+  transform: rotate(90deg);
+  margin: 0 auto;
+}
+.colorSonView{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: #121222;
+}
+.colorSmall{
+  /* width: 80rpx;
+  height: 80rpx; */
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: yellow;
+  position: relative
+}
+.colorbiao{
+  width: 0;
+  height: 0;
+  border-left: 20rpx solid transparent;
+  border-right: 20rpx solid transparent;
+  border-bottom: 40rpx solid yellow;
+  position: absolute;
+  top: -25rpx;
+  /* right: 20rpx */
+  right: 10rpx;
+}
+.controlTxtM{
+  width: 48%;
+}
+.controlTxtI{
+  margin-bottom: 20rpx;
+}
+.modelImg{
+  width: 180rpx;
+  height: 60rpx;
+}
+.activeImg{
+  border: 1px solid yellow;
+  border-radius: 20px;
+}
+
+
+
+
+/* 底部 */
+.foot{
+  /* height: 25%; */
+  height: 30%;
+  width: 95%;
+  color: white;
+}
+.btn{
+  display: inline-block;
+}
+.RunImg{
+  width: 120rpx;
+  height: 60rpx;
+}
+.labelImg{
+  width: 60rpx;
+  height: 60rpx;
+}

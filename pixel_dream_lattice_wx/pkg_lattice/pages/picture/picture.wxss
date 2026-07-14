@@ -1,0 +1,60 @@
+.page{
+  background: #121222
+}
+.content{
+  height: 75%;
+}
+.contentHead{
+  color: white;
+  background: #252533;
+  border-radius: 20px;
+  height: 8%;
+  margin-bottom: 2%;
+}
+.contentHeadView{
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+}
+.activeNav{
+  background:#0FB36E
+}
+.contentView{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-around;
+  overflow: auto;
+}
+.contentImgView{
+  width: 100%;
+  /* height: 100px; */
+  height: 100%;
+}
+.contentImg{
+  width: 31%;
+  margin-right: 1%;
+  margin-top: 1%;
+  /* height: 100px; */
+  border-radius: 5px;
+}
+.contentImg:nth-child(3n){
+  margin-right: 0;
+}
+
+.foot{
+  height: 25%;
+  background: black;
+  width: 95%;
+  color: white;
+  padding: 0 2.5%;
+}
+.RunImg{
+  width: 120rpx;
+  height: 60rpx;
+}
+.labelImg{
+  width: 60rpx;
+  height: 60rpx;
+}

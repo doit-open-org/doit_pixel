@@ -1,0 +1,45 @@
+<view class="page pos_abs w100 h100">
+  <view class="content" style="height:{{activeNav == 1?'75%':'85%'}}">
+    <view class="contentHead w80 margAuto flex_C_SA">
+      <view class="contentHeadView flexCC {{activeNav == 1 ? 'activeNav':''}}" bindtap="changeNav" data-i='1'>{{lang['static']}}</view>
+      <view class="contentHeadView flexCC {{activeNav == 2 ? 'activeNav':''}}" bindtap="changeNav" data-i='2'>{{lang['dynamic']}}</view>
+    </view>
+    <view class="contentView w100 h90">
+        <view class="contentImg" wx:if="{{activeNav == 1}}" wx:for="{{staticPictures}}" wx:key="*this" data-i="{{index}}" bindtap="ImgTap" style="border: 1px solid  {{i==index?'#10915F':'#121222'}};height:{{imgHeight}}px">
+          <image class="contentImgView" mode="aspectFit" src="../../img/pic/thumb/{{item}}.png"/>
+        </view>
+        <view class="contentImg" wx:if="{{activeNav == 2}}" wx:for="{{dynamicPictures}}" wx:key="*this" data-i="{{50+index}}" bindtap="ImgTap" style="border:1px solid {{i==(50+index)?' #10915F':'#121222'}};height:{{imgHeight}}px">
+          <image class="contentImgView" mode="aspectFit" src="../../img/pic/dongtu_thumb/{{item}}.gif"/>
+        </view>
+    </view>
+  </view>
+  <view class="foot flex_d_c flex margAuto" style="justify-content:space-around;height:{{activeNav == 1?'25%':'15%'}}">
+    <view class="footView flex_C_SB" wx:if="{{activeNav == 1}}">
+        <view class="footViewRun" bindtap="leftRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/leftJT.png"/>
+        </view>
+        <view class="footViewRun" style="color:#06B470">{{lang[run[runIndex]]}}</view>
+        <view class="footViewRun" bindtap="rightRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/rightJT.png"/>
+        </view>
+    </view>
+    <view class="footView flex_C_SB">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/suned.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{lightVal}}" min="1" max="100" step="1" background-color="#525252" active-color="#fff" bindchanging="lightChangeing" bindchange="lightChange"></slider>
+        </view>
+        <view class="footViewRun">{{lightVal}}%</view>
+    </view>
+    <view wx:if="{{activeNav == 1}}" class="footView flex_C_SB">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/speed.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{speedVal}}" min="1" max="100" step="1" background-color="#525252" active-color="#fff" bindchanging="speedChangeing" bindchange="speedChange"></slider>
+        </view>
+        <view class="footViewRun">{{speedVal}}%</view>
+    </view>
+  </view>
+</view>

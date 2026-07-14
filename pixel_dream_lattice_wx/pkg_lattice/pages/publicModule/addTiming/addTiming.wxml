@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="header">
+    <!-- <view class="headerView cancel" bindtap="pickerDo" data-n="1">{{lang['cancel']}}</view>
+    <view class="headerView headTitle"></view>
+    <view class="headerView add" bindtap="pickerDo" data-n="2">{{lang['storage']}}</view> -->
+    <view class="timeTips" style="text-align:center">
+      {{lang['nextTimeAt']}} {{day}}
+      <block wx:if="{{lan != 'en'}}">{{lang['th']}}</block>
+      <block wx:if="{{lan == 'en' && day > 3}}">{{lang['th']}}</block>
+      <block wx:if="{{lan == 'en' && day == 3}}">rd</block>
+      <block wx:if="{{lan == 'en' && day == 2}}">nd</block>
+      <block wx:if="{{lan == 'en' && day == 1}}">st</block>
+      <text style="margin:0 10rpx">{{changePicker[0].toString().padStart(2,'0')}}:{{changePicker[1].toString().padStart(2,'0')}}</text> {{lang['implement']}}<text style="margin-left:{{lan == 'zh'?0:10}}rpx"></text>{{switch?lang['turnOnDevice']:lang['turnOffevice']}}
+    </view>
+  </view>
+  <view class="pickerContainer">
+    <picker-view class="my-picker" value="{{index}}" bindchange="changePicker" mask-style="background:#242A36; z-index:0" indicator-style="color:#242A36;border-bottom:1rpx solid #fff;border-top:1px solid #fff">
+      <picker-view-column style="color:#242A36">
+        <view wx:for="{{hours}}" class="pickerFont">{{item}}{{lang['hour']}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{mins}}" class="pickerFont">{{item}}{{lang['minutes']}}</view>
+      </picker-view-column>
+      <!-- <picker-view-column>
+        <view wx:for="{{mins}}" class="pickerFont">{{item}}{{lang['seconds']}}</view>
+      </picker-view-column> -->
+    </picker-view>
+  </view>
+  <view class="repeatContainer">
+    <view class="repeatVeiw label">{{lang['repeat']}}</view>
+    <view class="repeatVeiw operation" bindtap="showModal" id="1">
+      <view>{{repeat == 1?lang['once']:lang['everyDay']}}</view>
+      <image src="../res/righTime.png" style="width:40rpx;height:40rpx" />
+    </view>
+  </view>
+  <view class="switchContainer">
+    <view class="repeatVeiw label">{{lang['switch']}}</view>
+    <!-- {{switch?lang['turnOnDevice']:lang['turnOffevice']}} -->
+    <view class="repeatVeiw operation" bindtap="showModal" id="2">
+      <!-- <switch color="#73DA8A" checked="{{switch}}" bindchange="switchStatus"/> -->
+      <view>{{switch?lang['turnOn']:lang['turnOff']}}</view>
+      <image src="../res/righTime.png" style="width:40rpx;height:40rpx" />
+    </view>
+  </view>
+  <view class="doBtnView">
+    <view class="btnView" bindtap="pickerDo" data-n="1">{{lang['cancel']}}</view>
+    <!-- <view class="btnView" bindtap="pickerDo" data-n="2">{{lang['storage']}}</view> -->
+    <view class="btnView" bindtap="pickerDo" data-n="2">{{lang['save']}}</view>
+  </view>
+</view>
+<popup show="{{showPop}}" position="bottom " bind:close="hideModal">
+  <view class="popView">
+     <view class="popTitle">{{popType==1?lang['repeat']:lang['switch']}}</view>
+     <view class="popRadio">
+       <radio-group class="popRadioGroup" wx:if="{{popType==1}}" bindchange="changeRepeat">
+         <label class="ragRadio">
+           <text>{{lang['once']}}</text><radio value="1" checked="{{repeat == 1}}"/>
+         </label>
+         <label class="ragRadio">
+          <text>{{lang['everyDay']}}</text><radio value="2" checked="{{repeat == 2}}"/>
+        </label>
+       </radio-group>
+       <radio-group class="popRadioGroup" wx:if="{{popType==2}}" bindchange="switchStatus">
+        <label class="ragRadio">
+          <text>{{lang['turnOn']}}</text><radio value="on" checked="{{switch}}"/>
+        </label>
+        <label class="ragRadio">
+         <text>{{lang['turnOff']}}</text><radio value="off" checked="{{!switch}}"/>
+       </label>
+      </radio-group>
+     </view>
+  </view>
+</popup>

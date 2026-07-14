@@ -1,0 +1,49 @@
+<view class="page w100 h100 pos_abs">
+  <view class="nav w100 h10 flexCC">
+    <view class="navCon w80 flexCC">
+      <view class="naview w50 flexCC {{navActive==0 ? 'naviewActive':''}}" bindtap="changeNav" data-i="0">{{lang['timing']}}</view>
+      <view class="naview w50 flexCC {{navActive==1 ? 'naviewActive':''}}" bindtap="changeNav" data-i="1">{{lang['countdown']}}</view>
+    </view>
+  </view>
+  <view class="content w100 h90" style="overflow:hidden">
+    <!-- timingView定时 -->
+    <view class="container timingContainer" style="display:{{navActive==0?'block':'none'}}">
+      <view class="timing">
+          <view class="timingViews">
+              <view class="timingView" wx:for="{{times}}">
+                  <view class="timingViewLeft timingSonView" bindtap="timedit" data-index="{{item.slotIndex}}">
+                      <text class="timingViewText timingViewtime">{{item.tms}}</text>
+                      <view wx:if="{{item.tp==0}}">
+                        <text class="timingViewText">{{lang['once']}}</text>
+                        <text class="timingViewText">{{lang['switch']}}：{{lang['close']}}</text>
+                      </view>
+                      <view wx:if="{{item.tp==1}}">
+                        <text class="timingViewText">{{lang['once']}}</text>
+                        <text class="timingViewText">{{lang['switch']}}：{{lang['open']}}</text>
+                      </view>
+                      <view wx:if="{{item.tp==2}}">
+                        <text class="timingViewText">{{lang['repeatTiming']}}</text>
+                        <text class="timingViewText">{{lang['switch']}}：{{lang['close']}}</text>
+                      </view>
+                      <view wx:if="{{item.tp==3}}">
+                        <text class="timingViewText">{{lang['repeatTiming']}}</text>
+                        <text class="timingViewText">{{lang['switch']}}：{{lang['open']}}</text>
+                      </view>
+                  </view>
+                  <view class="timingViewRight timingSonView">
+                      <switch color="#73DA8A" data-index="{{item.slotIndex}}" bindchange="swChange" 
+                      checked="{{item.on}}"/>
+                  </view>
+              </view>
+          </view>
+      </view>
+      <view class="addTiming">
+          <button type="primary" class="addBtn w80" bindtap="add">{{lang['add']}}</button>
+      </view>
+    </view>
+    <!-- countDown倒计时 -->
+    <view class="cdContainer h100" hidden="{{navActive != 1}}">
+      <countdown lang="{{lang}}" navActive="{{navActive}}" id="cdRef"/>
+    </view>
+  </view>
+</view>

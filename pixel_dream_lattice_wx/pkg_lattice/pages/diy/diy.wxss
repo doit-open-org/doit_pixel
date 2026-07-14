@@ -1,0 +1,87 @@
+.content{
+  height: 75%;
+  background: #121222;
+}
+.contentHead{
+  color: white;
+  background: #252533;
+  border-radius: 20px;
+  height: 8%;
+  margin-bottom: 2%;
+}
+.contentHeadView{
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+}
+.contentView{
+  width: 98%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.activeNav{
+  background:#0FB36E
+}
+.diyView{
+  width: 32%;
+  /* height: 32%; */
+  margin-top: 2%;
+  /* margin-right: 2%; */
+  margin-right: 1%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.diyView:nth-child(3n){
+  margin-right: 0;
+}
+.diySonView{
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.diySonView:nth-child(3n){
+  margin-right: 0;
+}
+.activeDiv{
+  border: 1px solid #00FFEE
+}
+.contentDiv{
+  /* width:4%;
+  height:4%; */
+  /* margin-top:1%;
+  margin-left:1%; */
+  margin-top:1px;
+  margin-left:1px;
+  /* background: #f3f0f085; */
+  background: #40404d;
+}
+.diyGrid{
+  display: grid !important;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+  gap: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.diyGrid .contentDiv{
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+}
+.foot{
+  height: 25%;
+  background: black;
+  width: 95%;
+  color: white;
+  padding: 0 2.5%;
+}
+.RunImg{
+  width: 120rpx;
+  height: 60rpx;
+}
+.labelImg{
+  width: 60rpx;
+  height: 60rpx;
+}

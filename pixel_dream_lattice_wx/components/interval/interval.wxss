@@ -1,0 +1,23 @@
+.bgView{
+  width: 500rpx;
+  height: 2rpx;
+  background: #fff;
+  position: absolute;
+}
+.bgViewCon{
+  margin-top: 270rpx;
+}
+.bgViewShowNum{
+  width: 460rpx;
+  height: 460rpx;
+  background: #121222;
+  position: absolute;
+  margin-top: -230rpx;
+  margin-left: 20rpx;
+  border-radius: 50%;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

@@ -1,0 +1,76 @@
+<view class="page flex flex_d_c w100 h100 pos_abs">
+  <wxs src="./diy.wxs" module="tdiy"></wxs>
+  <view class="content w100">
+    <view class="contentHead w80 margAuto h10 flex_C_SA">
+      <view class="contentHeadView flexCC {{activeNav == 1 ? 'activeNav':''}}" bindtap="changeNav" data-i='1'>{{lang['static']}}</view>
+      <view class="contentHeadView flexCC {{activeNav == 2 ? 'activeNav':''}}" bindtap="changeNav" data-i='2'>{{lang['dynamic']}}</view>
+    </view>
+    <!-- 静态 -->
+    <view class="contentView h80 margAuto ovAu" style="display:{{activeNav == 1 ? 'flex':'none'}}">
+      <view class="diyView diyGrid {{diyObjIndex == idx ? 'activeDiv':''}}" wx:for="{{diyObj}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx" bindlongpress="longPush" data-i="{{idx}}" style="height:{{viewWidth}}px" bindtap="clickDiy">
+          <view wx:for="{{cells}}" wx:for-item="cell" wx:key="*this" class="contentDiv" style="background:{{itm[cell] != undefined ? 'hsl('+itm[cell]+',100%,50%)' :''}}">
+          </view>
+      </view>
+    </view>
+    <!-- 动态 -->
+    <view class="contentView h80 margAuto ovAu" style="display:{{activeNav == 2 ? 'flex':'none'}}">
+      <view class="diyView diyGrid {{diyObjDtIndex == idx ? 'activeDiv':''}}" wx:for="{{diyObj_dt}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx" bindlongpress="longDtPush" data-i="{{idx}}" style="height:{{viewWidth}}px" bindtap="clickDtDiy">
+          <view wx:for="{{cells}}" wx:for-item="cell" wx:key="*this" class="contentDiv" style="background:{{itemObjArr[idx] && itemObjArr[idx][cell] != undefined ? 'hsl('+itemObjArr[idx][cell]+',100%,50%)' :''}}">
+          </view>
+      </view>
+      <!-- <view class="diyView pos_rel flex {{diyObjDtIndex == idx ? 'activeDiv':''}}" wx:for="{{diyObj_dt}}" wx:for-item="itm" wx:for-index="idx" bindlongpress="longDtPush" data-i="{{idx}}" style="height:{{viewWidth}}px" bindtap="clickDtDiy">
+        <view class="diySonView flex w100 h100 pos_abs" wx:for="{{itm}}" wx:for-item="im" wx:for-index="ix" style="z-index:{{itemObjArr[idx] == ix ? 1 : 0}}">
+          <view wx:for="{{400}}" class="contentDiv" style="background:{{im[item-1] != undefined ? 'hsl('+im[item-1]+',100%,50%)' :''}};height:{{viewWidth/20-1}}px;width:{{viewWidth/20-1}}px">
+          </view>
+        </view>
+      </view> -->
+
+
+    </view>
+    <view class="w100 h10 flexCC" bindtap="addDiyPic">
+      <!-- <navigator url="{{activeNav == 1 ? '../editDiy/editDiy':'../dynamicDiy/dynamicDiy'}}" style="width: 98%;"> -->
+      <view class="w100 flexCC" style="border:1px solid #00FFEE;border-radius:5px;">
+        <image mode="aspectFit" style="width:80rpx;height:80rpx" src="/img/diy/add.png"/>
+      </view>
+      <!-- </navigator> -->
+    </view>
+  </view>
+  <view class="foot flex_d_c flex margAuto" style="justify-content:space-around;">
+    <!-- 动态的编辑复制 -->
+    <view class="footView flex_C_SA" style="display:{{activeNav == 2 ? 'flex':'none'}}">
+        <view class="footViewRun" bindtap="diyDtEdit">
+          <image class="RunImg" mode="aspectFit" src="/img/diy/diyEdit.png"/>
+        </view>
+        <view class="footViewRun" bindtap="diyDtCopy">
+          <image class="RunImg" mode="aspectFit" src="/img/diy/copy.png"/>
+        </view>
+    </view>
+    <view class="footView flex_C_SB" style="display:{{activeNav == 2 ? 'none':'flex'}}">
+        <view class="footViewRun" bindtap="leftRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/leftJT.png"/>
+        </view>
+        <view class="footViewRun" style="color:#06B470">{{lang[run[runIndex]]}}</view>
+        <view class="footViewRun" bindtap="rightRun">
+          <image class="RunImg" mode="aspectFit" src="/img/txt/rightJT.png"/>
+        </view>
+    </view>
+    <view class="footView flex_C_SB">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/suned.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{lightVal}}" min="1" max="100" step="1" background-color="#525252" active-color="#fff" bindchanging="lightChangeing" bindchange="lightChange"></slider>
+        </view>
+        <view class="footViewRun">{{lightVal}}%</view>
+    </view>
+    <view class="footView flex_C_SB" style="display:{{activeNav == 2 ? 'none':'flex'}}">
+        <view class="footViewRun">
+          <image class="labelImg" mode="aspectFit" src="/img/txt/speed.png"/>
+        </view>
+        <view class="footViewRun w60">
+          <slider value="{{speedVal}}" min="1" max="100" step="1" background-color="#525252" active-color="#fff" bindchanging="speedChangeing" bindchange="speedChange"></slider>
+        </view>
+        <view class="footViewRun">{{speedVal}}%</view>
+    </view>
+  </view>
+</view>

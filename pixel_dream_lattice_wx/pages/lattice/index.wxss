@@ -1,0 +1,53 @@
+@import "/utils/uicss.wxss";
+page {
+  background: #121222;
+  font-size: 28rpx;
+  color: white;
+}
+
+.menuItem{
+  position: relative;
+  height: 400rpx;
+  border-radius: 20rpx;
+  margin-top: 40rpx;
+  overflow: hidden;
+}
+
+.menuItem_bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.menuItem_icon{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.menuItem .text-xl{
+  position: relative;
+  z-index: 1;
+}
+.btnView{
+  /* display: flex;
+  justify-content: space-around; */
+  border: 1px solid #cccccca6;
+}
+.btn{
+  /* background: #4b774b; */
+  border-radius: 5px;
+  width: 50%;
+  height: 50%;
+  display: inline-flex;
+  text-align: center;
+}
+.btn image{
+  width: 80rpx;
+  height: 80rpx;
+}
