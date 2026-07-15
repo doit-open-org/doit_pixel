@@ -1,105 +1,116 @@
 # Pixel Dream Lattice
 
-用于连接并控制蓝牙点阵灯设备的微信小程序。应用通过 BLE 协议与设备通信，提供颜色、场景、文字、图片、DIY 动画、音乐律动和定时等点阵显示控制能力。
+A WeChat Mini Program for connecting to and controlling Bluetooth LED matrix devices. It communicates with devices through the BLE protocol and provides matrix-display controls for color, scenes, text, images, DIY animations, music-reactive effects, and timers.
 
-## 功能
+## Protocol Documentation
 
-- 扫描并连接指定名称的蓝牙设备，默认筛选名称为 `TT`。
-- 自动发现服务及读写特征，并完成本地绑定或鉴权。
-- 支持设备开关、亮度、速度、屏幕方向、RGB 排列校准等基础控制。
-- 预设纯色和幻彩效果场景。
-- 文字点阵编辑，支持颜色、背景、亮度、速度及移动、闪烁、呼吸等播放效果。
-- 内置静态和动态图案图库。
-- 支持静态 DIY 绘制与动态 DIY 帧数据发送。
-- 提供 4 种音乐律动模式和灵敏度调节。
-- 支持倒计时和最多 5 组设备定时任务。
+| Document | Description |
+| --- | --- |
+| [BLE Communication Protocol](CozyLife_ble_v1.md) | English specification for BLE advertising, GATT framing, commands, provisioning, and OTA. |
+| [BLE Communication Protocol (Chinese)](CozyLife_ble_v1.cn.md) | Chinese translation of the BLE transport and device communication specification. |
+| [CozyLife Pixel BLE Protocol](CozyLife_Pixel_ble_protocol.md) | English specification for Pixel device data points, modes, color formats, timers, text, and 2D DIY data. |
+| [CozyLife Pixel BLE Protocol (Chinese)](CozyLife_Pixel_ble_protocol.cn.md) | Chinese translation of the Pixel data-point control protocol. |
 
-## 项目结构
+For the Chinese project documentation, see [README.cn.md](README.cn.md).
+
+## Features
+
+- Scan for and connect to Bluetooth devices with a specified name; the default filter is `TT`.
+- Automatically discover services and read/write characteristics, then complete local binding or authentication.
+- Control power, brightness, speed, screen orientation, RGB ordering, and other basic device settings.
+- Use preset solid-color and multicolor effect scenes.
+- Edit text bitmaps with color, background, brightness, speed, and moving, blinking, or breathing playback effects.
+- Use built-in static and animated pattern galleries.
+- Draw static DIY content and send dynamic DIY frame data.
+- Provide four music-reactive modes and sensitivity control.
+- Support a countdown and up to five device timer tasks.
+
+## Project Structure
 
 ```text
 .
-├── app.js                         # 小程序入口、全局状态和动态 DIY 数据发送
-├── app.json                       # 页面与分包配置
+├── app.js                         # Mini Program entry point, global state, and dynamic DIY transmission
+├── app.json                       # Page and subpackage configuration
 ├── pages/
-│   ├── lattice/                   # 点阵控制首页
-│   └── device/                    # BLE 扫描、连接、鉴权与日志
-├── pkg_lattice/                   # 点阵功能分包
+│   ├── lattice/                   # Matrix control home page
+│   └── device/                    # BLE scanning, connection, authentication, and logs
+├── pkg_lattice/                   # Matrix feature subpackage
 │   └── pages/
-│       ├── colorset/              # 颜色设置
-│       ├── effect/                # 幻彩效果
-│       ├── music/                 # 音乐律动
-│       ├── txt/、editTxt/         # 文字点阵与编辑
-│       ├── diy/、editDiy/         # 静态 DIY 与编辑
-│       ├── dynamicDiy/            # 动态 DIY
-│       ├── picture/               # 图案图库
-│       ├── time/                  # 定时与倒计时
-│       └── publicModule/          # 定时任务新增、编辑等公共页面
-├── components/                    # 颜色盘、倒计时、方向校准等组件
+│       ├── colorset/              # Color settings
+│       ├── effect/                # Multicolor effects
+│       ├── music/                 # Music-reactive effects
+│       ├── txt/, editTxt/         # Text matrix and editing
+│       ├── diy/, editDiy/         # Static DIY and editing
+│       ├── dynamicDiy/            # Dynamic DIY
+│       ├── picture/               # Pattern gallery
+│       ├── time/                  # Timers and countdowns
+│       └── publicModule/          # Shared pages for adding and editing timer tasks
+├── components/                    # Color wheel, countdown, orientation calibration, and other components
 ├── utils/
-│   ├── bleProtocol.js             # BLE 分帧、校验、鉴权与业务协议
-│   ├── bleSession.js              # BLE 会话状态与写入队列
-│   ├── control.js                 # 设备数据点控制封装
-│   ├── light.js                   # 点阵灯数据点定义
-│   ├── comm.js                    # 页面数据同步与定时任务缓存
-│   └── myCompat.js                # 微信运行时兼容层
-├── img/、imgData/                 # 内置图片与点阵数据资源
-└── scripts/                       # 字库和图库预览生成脚本
+│   ├── bleProtocol.js             # BLE framing, CRC, authentication, and application protocol
+│   ├── bleSession.js              # BLE session state and write queue
+│   ├── control.js                 # Device data-point control wrapper
+│   ├── light.js                   # LED matrix data-point definitions
+│   ├── comm.js                    # Page data synchronization and timer-task cache
+│   └── myCompat.js                # WeChat runtime compatibility layer
+├── img/, imgData/                 # Built-in image and matrix-data resources
+└── scripts/                       # Font and gallery preview generation scripts
 ```
 
-## 开发与运行
+## Development and Running
 
-### 环境要求
+### Requirements
 
-- 微信开发者工具，使用支持 BLE API 的基础库版本。
-- 真机调试设备需开启蓝牙，并授予小程序蓝牙权限。
-- 可连接的点阵灯设备，其广播名称默认需为 `TT`；可在设备连接页修改筛选名称。
+- WeChat DevTools with a base library version that supports BLE APIs.
+- A physical test device with Bluetooth enabled and Mini Program Bluetooth permission granted.
+- A compatible LED matrix device. Its default advertised name must be `TT`; the filter can be changed on the device connection page.
 
-### 启动步骤
+### Start
 
-1. 打开微信开发者工具，选择“导入项目”。
-2. 选择本仓库根目录 `pixel_dream_lattice_wx`。
-3. 使用 `project.config.json` 中的 AppID，或按团队规范替换为自己的测试 AppID。
-4. 在开发者工具中编译；蓝牙扫描、连接和控制需使用真机调试验证。
+1. Open WeChat DevTools and choose **Import Project**.
+2. Select the `pixel_dream_lattice_wx` directory at the repository root.
+3. Use the AppID in `project.config.json`, or replace it with a team-approved test AppID.
+4. Compile in DevTools. BLE scanning, connection, and control must be verified on a physical device.
 
-本项目使用微信小程序原生框架，不包含第三方包管理配置，因此通常不需要执行依赖安装命令。
+This project uses the native WeChat Mini Program framework and has no third-party package-management configuration, so dependency installation is normally unnecessary.
 
-## 设备通信
+## Device Communication
 
-设备连接页会执行以下流程：
+The device connection page performs the following steps:
 
-1. 初始化蓝牙适配器并扫描周边设备。
-2. 连接选中的设备，枚举服务和特征。
-3. 查找短 UUID 为 `2B10` 的通知特征及 `2B11` 的写入特征。
-4. 开启通知，根据广播数据与本地绑定记录执行绑定或鉴权。
-5. 获取设备信息、定时任务和数据点状态；控制页仅在会话就绪后可操作。
+1. Initialize the Bluetooth adapter and scan nearby devices.
+2. Connect to the selected device and enumerate services and characteristics.
+3. Find the notification characteristic with short UUID `2B10` and the write characteristic with short UUID `2B11`.
+4. Enable notifications, then bind or authenticate based on advertising data and the local binding record.
+5. Retrieve device information, timer tasks, and data-point state. The control page can operate only after the session is ready.
 
-传输层使用固定 20 字节帧：第 1 字节为协议版本（支持 `pv=1` 和 `pv=3`），第 2 字节包含分包序号及结束标记，后 17 字节承载数据，最后 1 字节为 CRC-8 校验。较长业务数据会自动拆包和重组。
+The transport layer uses fixed 20-byte frames: byte 1 is the protocol version (supports `pv=1` and `pv=3`), byte 2 contains the fragment sequence number and end flag, the following 17 bytes contain payload data, and the final byte is a CRC-8 checksum. Longer application data is fragmented and reassembled automatically.
 
-主要数据点定义在 `utils/light.js`，包括开关、工作模式、亮度、速度、音乐灵敏度、定时、文字、DIY、图片和屏幕方向等。
+The primary data-point definitions are in `utils/light.js`, including power, operating mode, brightness, speed, music sensitivity, timers, text, DIY, images, and screen orientation.
 
-## 本地数据
+## Local Data
 
-- 已绑定设备的鉴权信息会按设备标识写入微信本地存储，键名前缀为 `dream_ble_bind_`。
-- 定时任务表会按设备保存，键名前缀为 `lattice_timer_table_`。
-- 文字、颜色、DIY 等编辑状态也会按设备标识缓存。
+- Authentication data for bound devices is stored in WeChat local storage by device identifier, with the key prefix `dream_ble_bind_`.
+- Timer-task tables are stored by device with the key prefix `lattice_timer_table_`.
+- Editing state for text, colors, DIY content, and other data is also cached by device identifier.
 
-清除小程序本地存储后，设备需要重新完成本地绑定或鉴权。
+After Mini Program local storage is cleared, the device must complete local binding or authentication again.
 
-## 资源脚本
+## Resource Scripts
 
-- `scripts/generate-hzk16s-font.js`：生成 HZK16S 点阵字库数据。
-- `scripts/generate-gallery-previews.js`：生成图库预览资源。
+- `scripts/generate-hzk16s-font.js`: generates HZK16S bitmap-font data.
+- `scripts/generate-gallery-previews.js`: generates gallery preview resources.
 
-这些脚本用于维护内置资源，日常小程序编译和真机调试不依赖它们。
+These scripts maintain built-in resources and are not required for normal Mini Program compilation or physical-device debugging.
 
-## 注意事项
+## Notes
 
-- 微信开发者工具的模拟器无法完整模拟 BLE 扫描、连接与特征值通知，请以真机调试结果为准。
-- 项目中的 BLE UUID、广播数据格式、鉴权规则和数据点编号均与目标固件协议耦合；更换硬件或固件时，应先同步更新 `utils/bleProtocol.js` 与 `utils/light.js`。
-- 蓝牙连接页提供通信日志，可用于排查扫描、特征发现、鉴权、CRC 校验和数据点收发问题。
+- The WeChat DevTools simulator cannot fully simulate BLE scanning, connections, or characteristic notifications. Use physical-device results as the source of truth.
+- The BLE UUIDs, advertising format, authentication rules, and data-point IDs are coupled to the target firmware. When changing hardware or firmware, update `utils/bleProtocol.js` and `utils/light.js` first.
+- The Bluetooth connection page provides communication logs for troubleshooting scanning, characteristic discovery, authentication, CRC validation, and data-point traffic.
 
-## 联系人
+## Contact
 
-邮箱:lihonggang@doit.am
+Email: lihonggang@doit.am
 
-![联系人](a31fa5dfeae11ed49fca984fb5f73fd1.jpg)
+![Contact](a31fa5dfeae11ed49fca984fb5f73fd1.jpg)
